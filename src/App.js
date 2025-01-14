@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Train from './car';
 
 function App() {
   return (
@@ -18,7 +20,13 @@ function App() {
       </table>
       <h1>React is {5+5} times better with JSX</h1>
       <h1>{myElent}</h1>
+      <h2>{Car}</h2>
+      {Bus()}
+      {Football()}
+      {Garage()}
+      {MyForm()}
       
+      <Train />
     </div>
     
   );
@@ -29,6 +37,59 @@ if (x<10){
   text = "Hello";
 }
 const myElent = <h1>{text}</h1>;
+//react components
+//class component
+class Car extends React.Component{
+  render(){
+    return <h2>Hi, I am a Car!</h2>
+}
+};
 
+function Bus(){
+  return <h2>Hi, I am a Bus!</h2>;
+}
+
+const hey = <Car brand = "Ford"/>
+function Rar(props){
+  return <h2>Hi, I am a {props.brand}!</h2>;
+}
+function Football(){
+  const shoot = () =>{
+    alert("Great shoot");
+  }
+
+  return(
+    <button onClick={shoot}>Take the shot</button>
+  )
+}
+
+function Brand(props){
+  return <li>I am a { props.brand}</li>;
+
+}
+
+function Garage(){
+  const cars = ['Ford', 'BMW', 'AUDI'];
+  return(
+    <>
+    <h1>Who lives in my garage</h1>
+    <ul>
+      {cars.map((car) => <Car brand = {car} />)}
+    </ul>
+    </>
+  )
+}
+
+function MyForm(){
+  return (
+    <form>
+      <label>Enter your name;
+        <input type="text" name="name" />
+      </label>
+    </form>
+  )
+}
 export default App;
+
+
 
