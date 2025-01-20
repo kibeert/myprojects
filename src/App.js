@@ -3,36 +3,29 @@ import './App.css';
 import React, { useState } from 'react';
 import Train from './car';
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./src/pages/Layout";
+import Home from "./src/pages/Home";
+import Blogs from "./src/pages/Blogs";
+import Contact from "./src/pages/Contact";
+import Nopage from "./src/pages/Nopage";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-      <table>
-        <tr>
-          <th>Name</th>
-        </tr>
-        <tr>
-          <td>John</td>
-        </tr>
-        <tr>
-          <td>Elsa</td>
-        </tr>
-      </table>
-      <h1>React is {5+5} times better with JSX</h1>
-      <h1>{myElent}</h1>
-      <h2>{Car}</h2>
-      {Bus()}
-      {Football()}
-      {Garage()}
-      {MyForm()}
-      {myForm2()}
-      
-      <Train />
-    </div>
-    
-  );
+export default function App(){
+  return(
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="blogs" element={<Blogs />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<Nopage />} />
+      </Route>
+    </Routes>
+    </BrowserRouter>
+  )
 }
+
+
 const x = 7;
 let text = "Goodbye";
 if (x<10){
@@ -96,17 +89,23 @@ function MyForm(){
   )
 }
 
-function myForm2(){
-  const [username, setUsername]= ("");
+function MyForm2(){
+  const [username, setName]= useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Hello, ${username}!`);
+  }
 
   return(
     <form>
-      <label>Enter your username</label>
-      <input type='text' name='{username}' onChange={(e)=>setUsername(e.target.value)}></input>
+      <label>Enter your username
+      <input type='text' name='{username}' onChange={(e)=>setName(e.target.value)}/>
+      </label>
+      <input type='submit'/>
     </form>
   )
 }
-export default App;
 
 
 
