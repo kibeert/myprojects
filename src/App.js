@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import Train from './car';
+
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       {Football()}
       {Garage()}
       {MyForm()}
+      {myForm2()}
       
       <Train />
     </div>
@@ -81,11 +83,26 @@ function Garage(){
 }
 
 function MyForm(){
-  return (
+  const [name, setName] = useState("");
+
+  return(
     <form>
-      <label>Enter your name;
-        <input type="text" name="name" />
+      <label>Enter your name:
+        <input type='text' value={name} onChange={(e) => setName(e.target.value)} >
+        
+        </input>
       </label>
+    </form>
+  )
+}
+
+function myForm2(){
+  const [username, setUsername]= ("");
+
+  return(
+    <form>
+      <label>Enter your username</label>
+      <input type='text' name='{username}' onChange={(e)=>setUsername(e.target.value)}></input>
     </form>
   )
 }
